@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>CBM Model Description</title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+        <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+        <style>
+            h2 {text-align:center;}
+        </style>
+    </head>
+    <body>
+        <div id="patient-section">
+            <h2 style="left:50px">CBM Model Description</h2>
+            <div class = "image1"><img src="/assets/pic/patient.png" alt="patient" style="width:100px;height:100px;"></div>
+            <div class = "bottom-block">Patient</div>
+            <div class = "image2"><img src="/assets/pic/doctor1.png" alt="doctor1" style="width:105px;height:145px;"></div>
+            <div class = "image3"><img src="/assets/pic/doctor2.png" alt="doctor2" style="width:72px;height:130px;"></div>
+            <div class = "image4"><img src="/assets/pic/diagnosis1.png" alt="diagnosis1" style="width:90px;height:140px;"></div>
+            <div class = "image5"><img src="/assets/pic/diagnosis2.png" alt="diagnosis2" style="width:110px;height:160px;"></div>
+            <div class = "image6"><img src="/assets/pic/diagnosis-final.png" alt="diagnosis_final" style="width:72px;height:130px;"></div>
+            <div class = "arrow1"><img src="/assets/pic/arrow.png" alt="arrow1" style="width:100px;height:80px;" class="rotateimgneg30"></div>
+            <div class = "arrow2"><img src="/assets/pic/arrow.png" alt="arrow2" style="width:100px;height:80px;" class="rotateimg30"></div>
+            <div class = "arrow3"><img src="/assets/pic/arrow.png" alt="arrow3" style="width:160px;height:50px;"></div>
+            <div class = "arrow4"><img src="/assets/pic/arrow.png" alt="arrow4" style="width:160px;height:50px;"></div>
+            <div class = "arrow5"><img src="/assets/pic/arrow.png" alt="arrow1" style="width:100px;height:80px;" class="rotateimg30"></div>
+            <div class = "arrow6"><img src="/assets/pic/arrow.png" alt="arrow2" style="width:100px;height:80px;" class="rotateimgneg30"></div>
+            <div class = "bottom-block2">Credibility:</div>
+        </div>
+        <div>
+            <div class= "min">0</div>
+            <div class= "max">1</div>
+        </div>
+        <div id ='expert-table'>
+            <form class="expert1">
+                <select name="expert" class="classic">
+                    <option value="infectious">Infectious Specialist</option>
+                    <option value="otolaryngologist">Otolaryngologist</option>
+                    <option value="kidney">Kidney Expert</option>
+                    <option value="stomach">Stomach Expert</option>
+                </select>
+            </form>
+            <form class="expert2">
+                <select name="expert" class="classic">
+                    <option value="otolaryngologist" style="text-color: white">Otolaryngologist</option>
+                    <option value="infectious">Infectious Specialist</option>
+                    <option value="kidney">Kidney Expert</option>
+                    <option value="stomach">Stomach Expert</option>
+                </select>
+            </form>
+        </div>
+        <div id="input-probability">
+            <form class="input" method="post">
+                <input type="text" class="p1" name="prob1" value=<%= probA %> />
+                <input type="text" class="p2" name="prob2" value=<%= probB %> />
+                <p class="conf1">Confidence of disease: </p>
+                <p class="conf2">Confidence of disease: </p>
+                <input type="range" class="slider" name="range2" id="myRange" min="0" max="1" value="0.5" step="0.01" />
+                <p class="demo1">Credibility of expert: <span id="demo1"></span></p>
+                <p class="demo2">Credibility of expert: <span id="demo2"></span></p>
+                <input type="submit" class="sub" value="Calculate" />
+                <p class="result1" id="res1">CBM Probability: <br> <%= cred1 %> * <%= probA %> + <%= cred2 %> * <%= probB %> = <%= sum %></p>
+                <p class="result2" id="res2"><%= judge %></p>
+            </form>
+        </div>
+        <script type="text/javascript">
+            var slider = document.getElementById("myRange");
+            var output1 = document.getElementById("demo1");
+            var output2 = document.getElementById("demo2");
+            //var input2 = document.getElementsByName("prob2");
+            output1.innerHTML = slider.value; // Display the default slider value
+            output2.innerHTML = slider.value;
+            // Update the current slider value (each time you drag the slider handle)
+            slider.oninput = function() {
+                output1.innerHTML = this.value;
+                output2.innerHTML = (1 - this.value).toFixed(2);
+            }
+
+        </script>
+
+    </body>
+</html>
