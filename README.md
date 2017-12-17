@@ -5,6 +5,10 @@ The project is implemented using Node.js with express module and is rendered as 
 ![alt text](cbm1.png)
 ## The interface after draging the range slider and giving respective confidence of disease 
 ![alt text](cbm2.png)
+## How to run the app
+  npm install
+  node app.js
+Then, navigate to [localhost:3000/cbm](http://localhost:3000/)
 
 Image Source: <br />
 "https://www.freepik.com/free-photos-vectors/doctor“; <br />
